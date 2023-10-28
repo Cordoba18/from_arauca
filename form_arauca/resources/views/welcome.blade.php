@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,26 +13,29 @@
         <div class="container_form_img">
         <img src="{{ asset('storage/imgs/TEXTO.png') }}" alt="">
     </div>
-        <form action="" method="POST">
+        <form action="{{ route('home.save_participant') }}" method="POST">
             @csrf
             <label >Nombre</label>
             <input type="text" name="name" id="" placeholder="Ingresa tu nombre" required>
             <label >Nit</label>
-            <input type="text" name="nit" id="" placeholder="Ingresa tu nit" required>
+            <input type="number" name="nit" id="" placeholder="Ingresa tu nit" required>
+            <label >Ciudad</label>
+            <select name="city" id="departament">
+                <option value="">Seleccione una ciudad</option>
+                @foreach ($citys as $c)
+
+                <option value="{{ $c->id }}">{{ $c->city }}</option>
+
+                @endforeach
+            </select>
             <label >Dirección y barrio</label>
             <input type="text" name="address" id="" placeholder="Ingresa tu dirección" required>
             <label >Télefono</label>
             <input type="number" name="phone" id="" placeholder="Ingresa tu télefono" required>
-            <label >Departamento</label>
-            <select name="" id="departament">
-                <option value="">Seleccione un departamento</option>
-                @foreach ($departaments as $d)
 
-                <option value="{{ $d->id }}">{{ $d->departament }}</option>
-
-                @endforeach
-            </select>
+            <div class="container_form_button">
             <button>Registrarse</button>
+        </div>
         </form>
     </div>
 

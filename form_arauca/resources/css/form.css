@@ -4,19 +4,35 @@
     top: 50%;
     left: 50%;
     width: 300px;
-    padding: 50px;
+    padding: 30px;
     justify-content: center;
-
+    border-radius: 30px;
+    border: 3px solid black;
+    background-color: white;
+    animation: 1s loading_form ease-in-out;
 
 }
+
+@keyframes loading_form{
+
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+
+        opacity: 1;
+
+    }
+}
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:Armata, sans-serif;
 }
 
 .container_form .container_form_img{
 
     width: 100%;
-    height: 300px;
+    height: 200px;
     margin: 0;
 }
 
@@ -32,12 +48,63 @@ body{
     width: 100%;
     font-size: 15px;
     margin-top: 10px;
+    margin-bottom: 10px;
     outline: none;
     border: 0;
     border-radius: 5px;
     padding: 4px;
+    background-color: transparent;
+    color: black;
+
+}
+.container_form input{
+border-bottom:2px solid black;
 }
 .container_form label{
     font-size: 15px;
     font-weight: bold;
+}
+.container_form .container_form_button{
+
+    display: flex;
+    justify-content: center;
+
+}
+.container_form .container_form_button button{
+
+
+    background-color: white;
+    border: 0;
+    padding: 10px 100px;
+    width: 300px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+    border-radius: 30px;
+
+    border-bottom: 3px solid yellow;
+}
+.container_form .container_form_button button:hover{
+
+    background-color: white;
+    background-color: yellow;
+
+
+}
+
+@media (max-width:500px){
+.container_form{
+    width: 70%;
+    padding: 30px;
+    font-size: 10px;
+
+}
+
+.container_form .container_form_img{
+    height: 180px;
+}
+.container_form .container_form_img img{
+    object-fit: contain;
+}
+
 }
