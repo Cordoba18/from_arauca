@@ -12,28 +12,33 @@
 
     <div class="container_form" >
         <div class="container_form_img">
-        <img src="{{ asset('storage/imgs/TEXTO.png') }}" alt="">
-    </div>
+            <img src="{{ asset('storage/imgs/TEXTO.png') }}" alt="">
+        </div>
         <form id="form" action="{{ route('home.save_participant') }}" method="POST">
             @csrf
             <label >Nombre</label>
             <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" required>
-            <label >Nit</label>
-            <input type="number" name="nit" id="nit" placeholder="Ingresa tu nit" required>
-            <label >Ciudad</label>
+            <label >Cedula</label>
+            <input type="number" name="nit" id="nit" placeholder="Ingresa tu Cedula" required>
+            <label>Ciudad</label>
             <select name="city" id="city" required>
-                <option value="">Seleccione una ciudad</option>
+
                 @foreach ($citys as $c)
                 <option value="{{ $c->id }}">{{ $c->city }}</option>
                 @endforeach
             </select>
-            <label >Dirección y barrio</label>
-            <input type="text" name="address" id="address" placeholder="Ingresa tu dirección" required>
+            <label>Barrio/vereda</label>
+            <select name="neighborhood" id="neighborhood" required>
+                <option value="">Seleccione un barrio o vereda</option>
+                @foreach ($neighborhoods as $n)
+                <option value="{{ $n->id }}">{{ $n->neighborhood }}</option>
+                @endforeach
+            </select>
             <label >Télefono</label>
             <input type="number" name="phone" id="phone" placeholder="Ingresa tu télefono" required>
             <div class="container_tyc">
             <input type="checkbox" id="myCheckbox" name="check_tyc" required>
-            <label>Aceptar terminos y condiciones</label>
+           <a href="{{ route('home.terminos_condiciones') }}" target="_blank"><label>Aceptar terminos y condiciones</label></a>
         </div>
             <p class="message_error"></p>
             <div class="container_form_button">
@@ -41,7 +46,7 @@
         </div>
         </form>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    @vite(['resources/js/home.js'])
 </body>
 </html>

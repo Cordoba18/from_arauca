@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2023 a las 02:02:46
+-- Tiempo de generación: 30-10-2023 a las 23:17:01
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -1213,6 +1213,40 @@ INSERT INTO `departaments` (`id`, `departament`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `neighborhoods`
+--
+
+CREATE TABLE `neighborhoods` (
+  `id` int(11) NOT NULL,
+  `neighborhood` varchar(100) NOT NULL,
+  `id_city` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `neighborhoods`
+--
+
+INSERT INTO `neighborhoods` (`id`, `neighborhood`, `id_city`) VALUES
+(1, 'Popular', 128),
+(2, 'colinas', 128),
+(3, 'Renan barco', 128),
+(4, 'Barrio la serna', 128),
+(5, 'Barrio centro', 128),
+(6, 'Barrio san nicolas', 128),
+(7, 'Barrio chipre', 128),
+(8, 'Barrio carrilera', 128),
+(9, 'Barrio campamentos', 128),
+(10, 'Los chorros', 128),
+(11, 'Barrio nuevo', 128),
+(12, 'El Bebedero', 128),
+(13, 'Monte Oscuro', 128),
+(14, 'Kilómetro 35', 128),
+(15, 'El Retiro', 128),
+(16, 'la bastilla', 128);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `participants`
 --
 
@@ -1222,6 +1256,7 @@ CREATE TABLE `participants` (
   `nit` varchar(45) NOT NULL,
   `address` varchar(100) NOT NULL,
   `phone` varchar(45) NOT NULL,
+  `id_neighborhood` int(11) NOT NULL,
   `id_city` int(11) NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -1251,11 +1286,19 @@ ALTER TABLE `departaments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `neighborhoods`
+--
+ALTER TABLE `neighborhoods`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_neighborhoods_citys1_idx` (`id_city`);
+
+--
 -- Indices de la tabla `participants`
 --
 ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_participants_citys1_idx` (`id_city`);
+  ADD KEY `fk_participants_citys1_idx` (`id_city`),
+  ADD KEY `fk_participants_neighborhoods1_idx` (`id_neighborhood`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -1274,10 +1317,16 @@ ALTER TABLE `codes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `neighborhoods`
+--
+ALTER TABLE `neighborhoods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT de la tabla `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -1290,10 +1339,17 @@ ALTER TABLE `citys`
   ADD CONSTRAINT `fk_citys_departaments` FOREIGN KEY (`id_departament`) REFERENCES `departaments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `neighborhoods`
+--
+ALTER TABLE `neighborhoods`
+  ADD CONSTRAINT `fk_neighborhoods_citys1` FOREIGN KEY (`id_city`) REFERENCES `citys` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `participants`
 --
 ALTER TABLE `participants`
-  ADD CONSTRAINT `fk_participants_citys1` FOREIGN KEY (`id_city`) REFERENCES `citys` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_participants_citys1` FOREIGN KEY (`id_city`) REFERENCES `citys` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_participants_neighborhoods1` FOREIGN KEY (`id_neighborhood`) REFERENCES `neighborhoods` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

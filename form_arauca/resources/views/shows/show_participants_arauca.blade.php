@@ -27,13 +27,13 @@
             <h1>PARTICIPANTES</h1>
 
             <div class="table_participants">
-                <table class="table table-dark">
+                <table class="table">
                     <thead>
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>NIT</th>
                         <th>TÉLEFONO</th>
-                        <th>DIRECCIÓN</th>
+                        <th>BARRIO/VEREDA</th>
                         <th>CIUDAD</th>
                     </thead>
                     <tbody>
@@ -43,7 +43,7 @@
                             <td>{{ $p->name }}</td>
                             <td>{{ $p->nit }}</td>
                             <td>{{ $p->phone }}</td>
-                            <td>{{ $p->address }}</td>
+                            <td>{{ $p->neighborhood }}</td>
                             <td>{{ $p->city }}</td>
                         </tr>
                         @endforeach

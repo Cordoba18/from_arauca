@@ -13,7 +13,9 @@ class ParticipantsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     public function collection()
     {
-        $data = DB::select("SELECT p.id, p.name, p.nit, p.phone,p.address, c.city  FROM participants p INNER JOIN citys c ON p.id_city = c.id");
+        $data = DB::select("SELECT p.id, p.name, p.nit, p.phone, n.neighborhood, c.city  FROM participants p
+        INNER JOIN citys c ON p.id_city = c.id
+        INNER JOIN neighborhoods n ON p.id_neighborhood = n.id");
 
         return collect($data);
     }
@@ -25,7 +27,7 @@ class ParticipantsExport implements FromCollection, WithHeadings, ShouldAutoSize
             'Nombre',
             'NIT',
             'Tèlefono',
-            'Direcciòn',
+            'Barrio/Vereda',
             'Ciudad',
         ];
     }

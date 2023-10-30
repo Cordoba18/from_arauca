@@ -1,6 +1,8 @@
 
 const message_error = document.querySelector('.message_error');
 const form = document.querySelector('#form');
+
+
 form.addEventListener('submit', function(e) {
 
 
@@ -12,13 +14,14 @@ const myCheckbox = document.querySelector('#myCheckbox');
     const city = document.querySelector('#city').value;
     const nit = document.querySelector('#nit').value;
     const address = document.querySelector('#address').value;
+    const neighborhood = document.querySelector('#neighborhood').value;
 
 
-    if (name == "" || phone == "" || city == "" || nit == "" || address=="") {
+    if (name == "" || phone == "" || city == "" || nit == "" || address=="" || neighborhood=="") {
         message_error.textContent = "HAY CAMPOS VACIOS"
     e.preventDefault();
     }else if (!esTexto(name)) {
-        message_error.textContent = "NUMEROS NO PERMITIDOS EN NOMBRE"
+        message_error.textContent = "CARACTERES NO PERMITIDOS EN NOMBRE"
         e.preventDefault();
     }else if (name.length > 30) {
         message_error.textContent = "PON TU NOMBRE MAS CORTO"

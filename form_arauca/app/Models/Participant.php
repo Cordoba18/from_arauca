@@ -12,8 +12,8 @@ class Participant extends Model
     protected $fillable = [
         'name',
         'int',
-        'address',
         'phone',
         'id_city',
+        'id_neighborhood'
     ];
 }

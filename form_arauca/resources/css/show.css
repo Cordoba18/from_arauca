@@ -18,6 +18,7 @@
     object-fit: cover;
     height: 500px;
     animation: 1S slideInFromTop ease-in-out ;
+    box-shadow: 0px 30px 200px 10px orange;
 }
 .container_show .container_form_img{
     width: 100%;
