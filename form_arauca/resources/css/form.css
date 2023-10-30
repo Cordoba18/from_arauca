@@ -108,3 +108,37 @@ border-bottom:2px solid black;
 }
 
 }
+
+.container_form .message_error{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+    width: 100%;
+    color: red;
+    animation: titilar 1s infinite ease;
+}
+
+@keyframes titilar
+{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+
+.container_form .container_tyc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_form .container_tyc input{
+    width: auto;
+    margin-right: 5px;
+
+}

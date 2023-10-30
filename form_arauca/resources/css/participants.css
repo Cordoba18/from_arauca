@@ -44,7 +44,7 @@
     width: 100%;
     text-align: center;
     border-bottom: 0.5px solid grey;
-    width: 200px;
+
 }
 
 .container .container_code button{
@@ -54,6 +54,7 @@
     padding: 10px 40px;
     font-size: 20px;
     background-color: white;
+
 }
 .container .container_code button:hover{
 
@@ -87,4 +88,13 @@ body{
 .container .container_participants .table_participants{
     height: 400px;
     overflow-y: auto;
+    margin-bottom: 20px;
+}
+@media(max-width:500px){
+
+    .container .container_code, .container .container_participants{
+
+        width: 90%;
+
+    }
 }

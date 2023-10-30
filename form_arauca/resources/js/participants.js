@@ -4,10 +4,24 @@ let info_participants = container_participants.innerHTML;
 let container_code = document.querySelector('.container_code');
 container_participants.innerHTML = "";
 
-let code = 4213;
+
+let code = 0;
 
 let btn_validar = document.querySelector('#btn_validar');
-
+const _token = document.querySelector("input[name=_token]").value;
+$.ajax({
+    url: "get_code",
+    type: "POST",
+    data:{
+        _token: _token,
+    },success: function(response) {
+        code = response['code']['code'];
+    },
+    error: function(error) {
+        console.error(error);
+    }
+  },
+  )
 btn_validar.addEventListener('click', function(e) {
 
     e.preventDefault();

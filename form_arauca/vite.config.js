@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/css/participants.css',
                 //-------------------------------------------------------------------------------
                 'resources/js/participants.js',
+                'resources/js/home.js',
                 'resources/js/app.js'],
             refresh: true,
         }),

@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Concerns\FromCollection;
+
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ParticipantsExport;
+
 class HomeController extends Controller
 {
 
-    function Index(){
+    public function Index(){
         $citys = DB::select('SELECT * FROM citys where id_departament =  3 OR id_departament = 22 OR id_departament = 27 OR id_departament = 6 OR id_departament = 9 OR id_departament = 32');
         return view('welcome' ,compact('citys'));
     }
 
-    function save_participant(Request $request){
+    public function save_participant(Request $request){
 
         $name = $request->name;
         $nit = $request->nit;
@@ -45,17 +47,30 @@ class HomeController extends Controller
 
     }
 
-    function show_participant($nit){
+    public function show_participant($nit){
 
         $participant = DB::selectOne("SELECT * FROM participants WHERE nit = '$nit'");
         return view('shows.show_participant' , compact('participant'));
     }
 
-    function participants(){
+    public function participants(){
 
         $participants = DB::select("SELECT p.id, p.name, p.nit, p.address, p.phone, c.city FROM participants p INNER JOIN citys c ON p.id_city = c.id");
         return view('shows.show_participants_arauca' , compact('participants'));
     }
 
+    public function get_participants(){
 
+        {
+            return Excel::download(new ParticipantsExport, 'Participantes_Arauca.xlsx');
+        }
+    }
+
+    public function get_code(Request $request){
+
+
+        $code = DB::selectOne("SELECT c.code FROM codes c");
+
+        return response()->json(['code' => $code], 200);
+    }
 }
