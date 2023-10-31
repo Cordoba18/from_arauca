@@ -6,18 +6,16 @@ const form = document.querySelector('#form');
 form.addEventListener('submit', function(e) {
 
 
-
 const myCheckbox = document.querySelector('#myCheckbox');
 
     const name = document.querySelector('#name').value;
     const phone = document.querySelector('#phone').value;
     const city = document.querySelector('#city').value;
     const nit = document.querySelector('#nit').value;
-    const address = document.querySelector('#address').value;
     const neighborhood = document.querySelector('#neighborhood').value;
 
 
-    if (name == "" || phone == "" || city == "" || nit == "" || address=="" || neighborhood=="") {
+    if (name == "" || phone == "" || city == "" || nit == "" || neighborhood=="") {
         message_error.textContent = "HAY CAMPOS VACIOS"
     e.preventDefault();
     }else if (!esTexto(name)) {

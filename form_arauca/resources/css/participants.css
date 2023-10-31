@@ -1,8 +1,4 @@
-.container{
 
-
-
-}
 @keyframes slideInFromTop {
     0% {
         transform: translateY(-100%) translateX(-50%);
