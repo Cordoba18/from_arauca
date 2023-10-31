@@ -1,6 +1,7 @@
 .container_tic{
 
 height: 100vh;
+margin: 10px;
 
 
 }
@@ -23,4 +24,5 @@ body{
     padding: 10px;
     font-size: 30px;
     margin-bottom: 30px;
+
 }
